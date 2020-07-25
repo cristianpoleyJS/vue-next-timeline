@@ -1,28 +1,90 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <VueNextTimeline :items="items" :horizontal="true"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VueNextTimeline from './components/VueNextTimeline.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    VueNextTimeline
+  },
+  data () {
+    return {
+      items: [
+        {
+          title: 'Your title',
+          content: 'Free space information to expand on your topic',
+          color: 'red',
+          lineText: 'Jan'
+        },
+        {
+          title: 'Your title2',
+          content: 'Free space information to expand on your topic',
+          color: 'gray',
+          lineText: 'Feb'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          color: 'blue',
+          lineText: 'Mar'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          color: 'green',
+          lineText: 'Apr'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          color: 'orange',
+          lineText: 'May'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          color: 'yellow',
+          lineText: 'Jun'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          color: 'brown',
+          lineText: 'Jul'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          color: 'black',
+          lineText: 'Aug'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          lineText: 'Sep'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          lineText: 'Oct'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          lineText: 'Nov'
+        },
+        {
+          title: 'Your title3',
+          content: 'Free space information to expand on your topic',
+          lineText: 'Dec'
+        }
+      ]
+    }
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
