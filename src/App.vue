@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <VueNextTimeline :items="items" :horizontal="true"/>
+    <VueNextTimeline :items="items"/>
   </div>
 </template>
 
@@ -16,72 +16,29 @@ export default {
     return {
       items: [
         {
-          title: 'Your title',
-          content: 'Free space information to expand on your topic',
-          color: 'red',
-          lineText: 'Jan'
+          title: '2013',
+          content: 'You need to add',
+          color: '#2785ab'
         },
         {
-          title: 'Your title2',
-          content: 'Free space information to expand on your topic',
-          color: 'gray',
-          lineText: 'Feb'
+          title: '2014',
+          content: 'You need to add',
+          color: '#f89714'
         },
         {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          color: 'blue',
-          lineText: 'Mar'
+          title: '2015',
+          content: 'You need to add',
+          color: '#f65b78'
         },
         {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          color: 'green',
-          lineText: 'Apr'
+          title: '2016',
+          content: 'You need to add',
+          color: '#196cc7'
         },
         {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          color: 'orange',
-          lineText: 'May'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          color: 'yellow',
-          lineText: 'Jun'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          color: 'brown',
-          lineText: 'Jul'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          color: 'black',
-          lineText: 'Aug'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          lineText: 'Sep'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          lineText: 'Oct'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          lineText: 'Nov'
-        },
-        {
-          title: 'Your title3',
-          content: 'Free space information to expand on your topic',
-          lineText: 'Dec'
+          title: '2018',
+          content: 'You need to add',
+          color: '#364a20'
         }
       ]
     }
