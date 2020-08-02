@@ -4,83 +4,92 @@
     :style="{
       'min-width': minWidth,
       'max-width': maxWidth
-    }">
+    }"
+    :class="className">
     <table>
       <tbody>
         <template v-for="(item, ix) in items">
           <!-- Item impar -->
-          <td v-if="ix % 2 === 0" :key="item[itemUniqueKey] || ix" class="vue-next-timeline__item even">
+          <td
+            v-if="ix % 2 === 0"
+            :key="item[itemUniqueKey] || ix"
+            class="vue-next-timeline__item even">
             <!-- Title item -->
-            <tr
-              :class="{'li-last': ix === items.length - 1}"
-              :style="{'--color': colorItem(item)}">
-              <div class="vue-next-timeline__item--line" :style="{'--color': colorItem(item)}">
+            <tr :style="returnCustomElementColor(item)">
+              <div
+                class="vue-next-timeline__item--line"
+                :style="returnCustomElementColor(item)">
                 <span class="budget" />
               </div>
               <div class="vue-next-timeline__item--title">
-                <slot name="title">
-                  <span
-                    :title="itemTitle(item)"
-                    @click="titleClicked(item)"
-                    class="vue-next-timeline__item--title"
-                    v-if="itemTitle(item)"
-                    :style="{'--color': colorItem(item)}">
-                      {{ itemTitle(item) }}
-                  </span>
-                </slot>
+                <span
+                  :title="itemTitle(item)"
+                  @click="titleClicked(item)"
+                  v-if="itemTitle(item)"
+                  :style="[returnCustomElementColor(item), cursorPointer]">
+                  <slot name="title">
+                    {{ itemTitle(item) }}
+                  </slot>
+                </span>
               </div>
             </tr>
             <!-- Content item -->
-            <tr class="vue-next-timeline__item__wrapper-content" :style="{'min-width': minWidthItem, 'max-width': maxWidthItem}">
+            <tr
+              class="vue-next-timeline__item__wrapper-content"
+              :style="minMaxWidthTr">
               <div class="vue-next-timeline__item--content">
-                <slot name="content">
-                  <span
-                    :title="itemContent(item)"
-                    @click="titleClicked(item)"
-                    :style="{'--color': colorItem(item)}"
-                    class="vue-next-timeline__item--content"
-                    v-if="itemContent(item)">
-                      {{ itemContent(item) }}
-                  </span>
-                </slot>
+                <span
+                  :title="itemContent(item)"
+                  @click="titleClicked(item)"
+                  :style="[returnCustomElementColor(item), cursorPointer]"
+                  v-if="itemContent(item)">
+                  <slot name="content">
+                    {{ itemContent(item) }}
+                  </slot>
+                </span>
               </div>
             </tr>
           </td>
           <!-- Item par -->
-          <td v-else :key="item[itemUniqueKey] || ix" class="vue-next-timeline__item odd">
+          <td
+            v-else
+            :key="item[itemUniqueKey] || ix"
+            class="vue-next-timeline__item odd">
             <!-- Content item -->
-            <tr class="vue-next-timeline__item__wrapper-content" :style="{'min-width': minWidthItem, 'max-width': maxWidthItem}">
+            <tr
+              class="vue-next-timeline__item__wrapper-content"
+              :style="minMaxWidthTr">
                 <div class="vue-next-timeline__item--content">
-                  <slot name="content">
-                    <span
-                      :title="itemContent(item)"
-                      @click="titleClicked(item)" :style="{'--color': colorItem(item)}"
-                      class="vue-next-timeline__item--content"
-                      v-if="itemContent(item)">
-                        {{ itemContent(item) }}
-                    </span>
-                  </slot>
+                  <span
+                    :title="itemContent(item)"
+                    @click="titleClicked(item)"
+                    :style="[returnCustomElementColor(item), cursorPointer]"
+                    v-if="itemContent(item)">
+                    <slot name="content">
+                      {{ itemContent(item) }}
+                    </slot>
+                  </span>
                 </div>
             </tr>
             <!-- Title item -->
             <tr
               :key="item[itemUniqueKey] || ix"
-              :class="{'li-last': ix === items.length - 1}"
-              :style="{'--color': colorItem(item)}">
-                <div class="vue-next-timeline__item--line" :style="{'--color': colorItem(item)}">
+              :style="returnCustomElementColor(item)">
+                <div
+                  class="vue-next-timeline__item--line"
+                  :style="returnCustomElementColor(item)">
                   <span class="budget" />
                 </div>
                 <div class="vue-next-timeline__item--title">
-                  <slot name="title">
-                    <span
-                      :title="itemTitle(item)"
-                      @click="titleClicked(item)"
-                      class="vue-next-timeline__item--title"
-                      v-if="itemTitle(item)"
-                      :style="{'--color': colorItem(item)}">
-                        {{ itemTitle(item) }}
-                    </span>
-                  </slot>
+                  <span
+                    :title="itemTitle(item)"
+                    @click="titleClicked(item)"
+                    v-if="itemTitle(item)"
+                    :style="[returnCustomElementColor(item), cursorPointer]">
+                    <slot name="title">
+                      {{ itemTitle(item) }}
+                    </slot>
+                  </span>
                 </div>
             </tr>
           </td>
@@ -111,7 +120,7 @@ export default {
       default: 'content'
     },
     itemClickable: {
-      type: [String, Boolean],
+      type: [Boolean],
       default: true
     },
     minWidth: {
@@ -120,7 +129,7 @@ export default {
     },
     maxWidth: {
       type: String,
-      default: '1220px'
+      default: '100%'
     },
     minWidthItem: {
       type: String,
@@ -140,19 +149,34 @@ export default {
     className: {
       type: String,
       default: ''
-    },
-    contentClass: {
-      type: String,
-      default: ''
-    },
-    contentSubstr: {
-      type: Number,
-      default: 250
     }
   },
   data () {
     return {
       itemSelected: {}
+    }
+  },
+  computed: {
+
+    cursorPointer () {
+      return {
+        cursor: this.itemClickable ? 'pointer' : 'initial'
+      }
+    },
+
+    minMaxWidthTr () {
+      const { minWidthItem, maxWidthItem } = this
+      const styleObj = {}
+
+      if (minWidthItem) {
+        styleObj['min-width'] = minWidthItem
+      }
+
+      if (maxWidthItem) {
+        styleObj['max-width'] = maxWidthItem
+      }
+
+      return styleObj
     }
   },
   methods: {
@@ -165,13 +189,16 @@ export default {
       return item[this.itemContentKey]
     },
 
-    colorItem (item) {
-      return item.color || '#1e2124'
+    returnCustomElementColor (item) {
+      return {
+        '--color': item.color || '#1e2124',
+        'text-align': this.textAlign
+      }
     },
 
     titleClicked (item) {
       if (this.itemClickable) {
-        this.$emit('click', item)
+        this.$emit('click-item', item)
       }
     }
   }
@@ -180,105 +207,102 @@ export default {
 
 <style scoped lang="scss">
   .vue-next-timeline {
-
-    font-family: sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+    padding: 30px 0;
+    overflow-x: auto;
 
     > table {
-      list-style: none;
-      display: flex;
-      padding: 0;
       border-collapse: collapse;
 
       tr {
-        min-height: 80px;
-        max-width: 200px;
         display: block;
+        min-height: 80px;
+        margin-top: 32px;
         position: relative;
       }
 
       .vue-next-timeline__item {
-        position: relative;
-        border: 0;
         padding: 0;
 
         &--line {
           background-color: var(--color);
-          width: 1px;
-          height: 70px;
-          display: block;
           position: absolute;
+          height: 70px;
+          width: 1px;
           left: 50%;
 
           .budget {
-            position: absolute;
-            bottom: 0;
             background-color: var(--color);
-            width: 10px;
-            height: 10px;
+            position: absolute;
             border-radius: 100%;
+            height: 10px;
+            width: 10px;
 
-            &:before {
-              content: '';
-              width: 10px;
-              height: 10px;
-              border: 1px solid var(--color);
-              display: block;
-              padding: 6px;
-              position: absolute;
-              top: -7px;
-              left: -7px;
+            &:before,
+            &:after {
               border-radius: 100%;
+              position: absolute;
+              display: block;
+              content: '';
+              padding: 6px;
+            }
+            &:before {
+              border: 1px solid var(--color);
+              height: 10px;
+              width: 10px;
+              left: -7px;
+              top: -7px;
             }
             &:after {
-              content: '';
-              width: 24px;
-              height: 24px;
               border: 1px solid #848484;
-              display: block;
-              padding: 6px;
-              position: absolute;
-              top: -14px;
+              height: 24px;
+              width: 24px;
               left: -14px;
-              border-radius: 100%;
+              top: -14px;
             }
           }
         }
 
         &--title {
-          font-weight: 300;
-          color: var(--color);
-          display: block;
-          font-size: 28px;
-          line-height: 22px;
-          text-align: left;
           text-transform: uppercase;
-          line-height: 2rem;
-          position: absolute;
+          color: var(--color);
           text-align: center;
-          width: 100%;
+          line-height: 2rem;
+          font-weight: 300;
+          font-size: 28px;
+          display: flex;
+          height: 59px;
+
+          > span {
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            align-self: center;
+            overflow: hidden;
+            padding: 0 10px;
+            width: 100%;
+          }
         }
 
         &__wrapper-content {
           min-height: 80px;
-          position: relative;
-          display: block;
         }
         &--content {
-          font-size: 14px;
+          text-transform: uppercase;
           line-height: 20px;
           color: #848484;
+          font-size: 14px;
           width: 100%;
-          position: absolute;
           left: 0;
-          text-align: left;
-          text-transform: uppercase;
-          padding: 8px 0;
-          width: 100%;
+
+          > span {
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            overflow: hidden;
+            max-height: 59px;
+          }
         }
 
         // Impar
@@ -289,24 +313,24 @@ export default {
           }
 
           .vue-next-timeline__item--title {
-            bottom: 100%;
+            margin-bottom: 80px;
+            margin-top: -59px;
           }
-          .vue-next-timeline__item--content {
-            top: 1rem;
+          .vue-next-timeline__item--content > span {
             border-bottom: 2px solid var(--color);
+            padding-bottom: 4px;
           }
           .vue-next-timeline__item--line {
             bottom: 0;
             &:before {
-              position: absolute;
               background-color: var(--color);
-              content: '';
-              width: 20px;
-              height: 20px;
-              top: -4px;
-              left: -9px;
-              display: block;
               border-radius: 100%;
+              position: absolute;
+              content: '';
+              height: 20px;
+              width: 20px;
+              left: -9px;
+              top: -4px;
             }
 
             .budget {
@@ -317,17 +341,16 @@ export default {
         }
         // Par
         &.odd {
-          tr:first-child {
-            border-bottom: 1px solid #b2b3b6;
+          tr:nth-child(2) {
+            border-top: 1px solid #b2b3b6;
           }
 
           .vue-next-timeline__item--title {
-            top: 100%;
-            margin-top: 6px;
+            margin-top: 86px;
           }
-          .vue-next-timeline__item--content {
-            bottom: 1rem;
+          .vue-next-timeline__item--content > span {
             border-top: 2px solid var(--color);
+            padding-top: 4px;
           }
           .vue-next-timeline__item--line {
             top: 0;
@@ -337,14 +360,14 @@ export default {
             }
 
             &:after {
-              position: absolute;
               background-color: var(--color);
+              border-radius: 100%;
+              position: absolute;
+              bottom: -12px;
+              height: 20px;
               content: '';
               width: 20px;
-              height: 20px;
-              bottom: -12px;
               left: -10px;
-              border-radius: 100%;
             }
           }
         }
