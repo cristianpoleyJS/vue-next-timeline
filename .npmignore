@@ -1,0 +1,13 @@
+# User & editor settings
+.editorconfig
+jest.config.js
+postcss.config.js
+
+# Build files
+.circleci
+.github
+.storybook
+
+# Documentation files
+stories
+coverage
