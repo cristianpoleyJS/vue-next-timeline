@@ -38,7 +38,7 @@ Vue.use(VueNextTimeline)
 #### Vue 3 (globally)
 ```js
 import { createApp } from 'vue'
-import VueHorizontalTimeline from "vue-horizontal-timeline"
+import VueNextTimeline from "vue-next-timeline"
 
 // Create Vue instance
 const app = createApp(App)
@@ -97,7 +97,7 @@ export default {
 | Property name       |    Type |  Default  | Description                                                                                    |
 | ------------------------------ | ---------- | --------- | -------------------------------------------------------- |
 | items                         |   Array |   []    | Array of objects to be displayed. Must have at least a content property
-| item-unique-key         |   String |   ''        | Key with unique value of each item in the array. Used for the v-for Key |
+| item-unique-key         |   String |   null        | Key with unique value of each item in the array. Used for the v-for Key |
 | item-title-key               |   String |   'title'    | Key to display the item title                       |
 | item-content-key               |   String |   'content'    | Key to display the contents of the item                    |
 | item-clickable       | Boolean |    true     | Indicates if the title or content can be clicked to launch a $emit event with the clicked element |

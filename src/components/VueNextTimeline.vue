@@ -10,71 +10,12 @@
       <tbody>
         <template v-for="(item, ix) in items">
           <!-- Item impar -->
-          <td
-            v-if="ix % 2 === 0"
-            :key="item[itemUniqueKey] || ix"
-            class="vue-next-timeline__item even">
-            <!-- Title item -->
-            <tr :style="returnCustomElementColor(item)">
-              <div
-                class="vue-next-timeline__item--line"
-                :style="returnCustomElementColor(item)">
-                <span class="budget" />
-              </div>
-              <div class="vue-next-timeline__item--title">
-                <span
-                  :title="itemTitle(item)"
-                  @click="titleClicked(item)"
-                  v-if="itemTitle(item)"
-                  :style="[returnCustomElementColor(item), cursorPointer]">
-                  <slot name="title">
-                    {{ itemTitle(item) }}
-                  </slot>
-                </span>
-              </div>
-            </tr>
-            <!-- Content item -->
-            <tr
-              class="vue-next-timeline__item__wrapper-content"
-              :style="minMaxWidthTr">
-              <div class="vue-next-timeline__item--content">
-                <span
-                  :title="itemContent(item)"
-                  @click="titleClicked(item)"
-                  :style="[returnCustomElementColor(item), cursorPointer]"
-                  v-if="itemContent(item)">
-                  <slot name="content">
-                    {{ itemContent(item) }}
-                  </slot>
-                </span>
-              </div>
-            </tr>
-          </td>
-          <!-- Item par -->
-          <td
-            v-else
-            :key="item[itemUniqueKey] || ix"
-            class="vue-next-timeline__item odd">
-            <!-- Content item -->
-            <tr
-              class="vue-next-timeline__item__wrapper-content"
-              :style="minMaxWidthTr">
-                <div class="vue-next-timeline__item--content">
-                  <span
-                    :title="itemContent(item)"
-                    @click="titleClicked(item)"
-                    :style="[returnCustomElementColor(item), cursorPointer]"
-                    v-if="itemContent(item)">
-                    <slot name="content">
-                      {{ itemContent(item) }}
-                    </slot>
-                  </span>
-                </div>
-            </tr>
-            <!-- Title item -->
-            <tr
-              :key="item[itemUniqueKey] || ix"
-              :style="returnCustomElementColor(item)">
+          <template v-if="ix % 2 === 0">
+            <td
+              :key="itemUniqueKey ? item[itemUniqueKey] : ix"
+              class="vue-next-timeline__item even">
+              <!-- Title item -->
+              <tr :style="returnCustomElementColor(item)">
                 <div
                   class="vue-next-timeline__item--line"
                   :style="returnCustomElementColor(item)">
@@ -91,8 +32,66 @@
                     </slot>
                   </span>
                 </div>
-            </tr>
-          </td>
+              </tr>
+              <!-- Content item -->
+              <tr
+                class="vue-next-timeline__item__wrapper-content"
+                :style="minMaxWidthTr">
+                <div class="vue-next-timeline__item--content">
+                  <span
+                    :title="itemContent(item)"
+                    @click="titleClicked(item)"
+                    :style="[returnCustomElementColor(item), cursorPointer]"
+                    v-if="itemContent(item)">
+                    <slot name="content">
+                      {{ itemContent(item) }}
+                    </slot>
+                  </span>
+                </div>
+              </tr>
+            </td>
+          </template>
+          <!-- Item par -->
+          <template v-else>
+            <td :key="itemUniqueKey ? item[itemUniqueKey] : ix"
+              class="vue-next-timeline__item odd">
+              <!-- Content item -->
+              <tr
+                class="vue-next-timeline__item__wrapper-content"
+                :style="minMaxWidthTr">
+                  <div class="vue-next-timeline__item--content">
+                    <span
+                      :title="itemContent(item)"
+                      @click="titleClicked(item)"
+                      :style="[returnCustomElementColor(item), cursorPointer]"
+                      v-if="itemContent(item)">
+                      <slot name="content">
+                        {{ itemContent(item) }}
+                      </slot>
+                    </span>
+                  </div>
+              </tr>
+              <!-- Title item -->
+              <tr :style="returnCustomElementColor(item)">
+                  <div
+                    class="vue-next-timeline__item--line"
+                    :style="returnCustomElementColor(item)">
+                    <span class="budget" />
+                  </div>
+                  <div class="vue-next-timeline__item--title">
+                    <span
+                      :title="itemTitle(item)"
+                      @click="titleClicked(item)"
+                      v-if="itemTitle(item)"
+                      :style="[returnCustomElementColor(item), cursorPointer]">
+                      <slot name="title">
+                        {{ itemTitle(item) }}
+                      </slot>
+                    </span>
+                  </div>
+              </tr>
+            </td>
+          </template>
         </template>
       </tbody>
     </table>
@@ -109,7 +108,7 @@ export default {
     },
     itemUniqueKey: {
       type: String,
-      default: ''
+      default: null
     },
     itemTitleKey: {
       type: String,
