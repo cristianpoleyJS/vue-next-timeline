@@ -1,24 +1,22 @@
 <div align="center">
-  <img src="./.github/logo.png" width="200px">
+  <img src="./.github/logo.png" width="250px">
   <h1>Vue Next Timeline</h1>
 </div>
-<p align="center">
-  A simple component to display a **timeline in horizontal** format with **Vue3.**
-</p>
+
+> A simple component to display a __timeline in horizontal__ format with __Vue3__.
+
+## Status
 
 [![Version](https://img.shields.io/npm/v/vue-next-timeline.svg)](https://github.com/cristianpoleyJS/vue-next-timeline/)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Downloads](https://img.shields.io/npm/dt/vue-next-timeline.svg)](https://github.com/cristianpoleyJS/vue-next-timeline/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a4f0ac8e-0cbc-4e9d-8071-3a90a3436ffb/deploy-status)](https://vue-next-timeline.netlify.app/)
-
-<a href="https://www.buymeacoffee.com/cristianpoley" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 ## How to install
 
 ### npm
 
 ```bash
-$ npm install vue-next-timeline --save
+npm install vue-next-timeline --save
 ```
 
 ## Quick start
@@ -27,15 +25,7 @@ $ npm install vue-next-timeline --save
 
 You can import in your `main.js` file
 
-#### Vue 2 (globally)
-```js
-import Vue from 'vue'
-import VueNextTimeline from "vue-next-timeline"
-
-Vue.use(VueNextTimeline)
-```
-
-#### Vue 3 (globally)
+#### Globally
 ```js
 import { createApp } from 'vue'
 import VueNextTimeline from "vue-next-timeline"
@@ -47,7 +37,7 @@ const app = createApp(App)
 app.component(VueNextTimeline)
 ```
 
-#### Vue 2 or Vue 3 (locally in any component)
+#### Locally in any component
 
 ```js
 import { VueNextTimeline } from "vue-next-timeline";
@@ -117,15 +107,19 @@ export default {
 Fork the project and enter this commands in your terminal
 
 ```sh
-$ git clone https://github.com/cristianpoleyJS/vue-next-timeline.git
-$ cd vue-next-timeline
-$ npm install
-$ npm run serve
+git clone https://github.com/cristianpoleyJS/vue-next-timeline.git
+cd vue-next-timeline
+npm install
+npm run serve
 ```
 
 ### Commitlint
 
 This project follows the [commitlint](https://github.com/conventional-changelog/commitlint) guidelines, with minor changes.
+
+## Contributing
+
+<a href="https://www.buymeacoffee.com/cristianpoley" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
 ## License
 

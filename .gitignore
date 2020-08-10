@@ -19,4 +19,10 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.sw*
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Static
+storybook-static
