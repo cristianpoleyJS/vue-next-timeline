@@ -1,6 +1,6 @@
 {
   "name": "vue-next-timeline",
-  "version": "0.1.0",
+  "version": "0.1.1alpha1",
   "private": false,
   "description": "Horizontal Timelime component done with Vue3",
   "homepage": "https://github.com/cristianpoleyJS/vue-next-timeline#readme",
@@ -13,11 +13,10 @@
   "unpkg": "dist/vue-next-timeline.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:bundle": "vue-cli-service build --target lib --name vue-next-timeline ./src/components/index.js",
-    "deploy": "npm run build && npm publish --access public",
-    "build": "npm run build:bundle",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit",
+    "build": "vue-cli-service build --target lib --name vue-next-timeline ./src/components/index.js",
+    "deploy": "npm run build && npm publish --access public"
   },
   "dependencies": {
     "vue": "^3.0.0-0"
@@ -32,7 +31,11 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "node-forge": ">=0.10.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "bugs": {
     "url": "https://github.com/cristianpoleyJS/vue-next-timeline/issues"
@@ -43,7 +46,7 @@
     "vue3",
     "vue-next",
     "javascript-timeline",
-    "componente-timeline",
+    "component-timeline",
     "vue-timeline",
     "vue-next-timeline",
     "next-timeline"
@@ -55,5 +58,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com:cristianpoleyJS/vue-next-timeline.git"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
