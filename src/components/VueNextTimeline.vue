@@ -28,7 +28,7 @@
                     v-if="itemTitle(item)"
                     :style="[returnCustomElementColor(item), cursorPointer]">
                     <slot name="title">
-                      {{ itemTitle(item) }}
+                      <span v-html="itemTitle(item)"/>
                     </slot>
                   </span>
                 </div>
@@ -44,7 +44,7 @@
                     :style="[returnCustomElementColor(item), cursorPointer]"
                     v-if="itemContent(item)">
                     <slot name="content">
-                      {{ itemContent(item) }}
+                      <span v-html="itemContent(item)"/>
                     </slot>
                   </span>
                 </div>
@@ -66,7 +66,7 @@
                       :style="[returnCustomElementColor(item), cursorPointer]"
                       v-if="itemContent(item)">
                       <slot name="content">
-                        {{ itemContent(item) }}
+                        <span v-html="itemContent(item)"/>
                       </slot>
                     </span>
                   </div>
@@ -85,7 +85,7 @@
                       v-if="itemTitle(item)"
                       :style="[returnCustomElementColor(item), cursorPointer]">
                       <slot name="title">
-                        {{ itemTitle(item) }}
+                        <span v-html="itemTitle(item)"/>
                       </slot>
                     </span>
                   </div>
@@ -211,6 +211,7 @@ export default {
 
     > table {
       border-collapse: collapse;
+      margin: 0 auto;
 
       tr {
         display: block;
