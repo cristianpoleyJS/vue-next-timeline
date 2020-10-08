@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./.github/logo.png" width="250px">
+  <img src="./.github/logo.png" width="450px">
   <h1>Vue Next Timeline</h1>
 </div>
 
@@ -10,6 +10,9 @@
 [![Version](https://img.shields.io/npm/v/vue-next-timeline.svg)](https://github.com/cristianpoleyJS/vue-next-timeline/)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 [![Downloads](https://img.shields.io/npm/dt/vue-next-timeline.svg)](https://github.com/cristianpoleyJS/vue-next-timeline/)
+[![Dependencies](https://img.shields.io/david/cristianpoleyjs/vue-next-timeline)](https://github.com/cristianpoleyJS/vue-next-timeline/)
+
+## [Demo](https://codesandbox.io/s/gracious-pascal-re2el)
 
 ## How to install
 
@@ -28,7 +31,7 @@ You can import in your `main.js` file
 ```js
 import App from './App.vue'
 import { createApp } from 'vue'
-import VueNextTimeline from "vue-next-timeline"
+import VueNextTimeline from 'vue-next-timeline'
 
 const app = createApp(App)
 app.component(VueNextTimeline)
@@ -37,7 +40,7 @@ app.component(VueNextTimeline)
 ### Locally in any component
 
 ```js
-import VueNextTimeline from 'vue-next-timeline';
+import VueNextTimeline from 'vue-next-timeline'
 
 export default {
   components: {
@@ -45,6 +48,10 @@ export default {
   }
 };
 ```
+
+## Use Web Component
+
+There is also a Web Component file that you can download from this [link to Github](https://github.com/cristianpoleyJS/vue-next-timeline/blob/master/vue-next-timeline-wc.js)
 
 ## Basic usage
 
@@ -60,20 +67,20 @@ export default {
         title: '2013',
         content: 'The international year of mathematics on planet Earth. The international year of mathematics on planet Earth',
         color: '#2785ab'
-      };
+      }
       const item2 = {
         title: '2014',
         content: 'International Year of Family Farming',
         color: '#f89714'
-      };
+      }
       const item3 = {
         title: '2015',
         content: 'International Year of Light and Light-Based Technologies',
         color: '#f65b78'
-      };
-      const items = [item1, item2, item3];
+      }
+      const items = [item1, item2, item3]
 
-      return { items };
+      return { items }
     }
   };
 </script>
