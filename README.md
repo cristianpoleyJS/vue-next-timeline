@@ -12,9 +12,7 @@
 [![Downloads](https://img.shields.io/npm/dt/vue-next-timeline.svg)](https://github.com/cristianpoleyJS/vue-next-timeline/)
 [![Dependencies](https://img.shields.io/david/cristianpoleyjs/vue-next-timeline)](https://github.com/cristianpoleyJS/vue-next-timeline/)
 
-## Demo
-
-[![Try it!](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gracious-pascal-re2el)
+## [Demo](https://codesandbox.io/s/gracious-pascal-re2el)
 
 ## How to install
 
