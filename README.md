@@ -49,10 +49,6 @@ export default {
 };
 ```
 
-## Use Web Component
-
-There is also a Web Component file that you can download from this [link to Github](https://github.com/cristianpoleyJS/vue-next-timeline/blob/master/vue-next-timeline-wc.js)
-
 ## Basic usage
 
 ```html
