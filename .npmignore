@@ -23,6 +23,5 @@ coverage
 # Others
 src
 public
-.browserslistrc
 babel.config.js
 .editorconfig
